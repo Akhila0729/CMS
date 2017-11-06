@@ -18,11 +18,7 @@ app.set("view engine", "ejs"); // specify our view engine
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/tracking_assets/'));  // works for views in root view folder
-// app.get('/', function(req,res){
-//   res.render('index',{
-//     title:'childrenmonitor'
-//   });
-// });
+
 
 // Request to this URI will be handled by this CONTROLLER..........
 app.use('/', require('./controllers/home'));
