@@ -5,6 +5,7 @@ var http = require("http");
 var sqlite3 = require('sqlite3').verbose();
 var db = new sqlite3.Database('./model/testDB.db');
 
+//This method is called when the user hits on the login page.
 api.get('/', function (req, res) {
     res.render('login', {
         title: 'Login'
