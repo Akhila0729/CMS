@@ -26,7 +26,7 @@ api.post('/', function(req, res){
         // db.run("DROP TABLE newTest");
         db.run("CREATE TABLE IF NOT EXISTS newTest (col1, col2)");
         db.run("INSERT INTO newTest VALUES (?, ?)",[username, password])
-          //  db.run("UPDATE newTest SET col1 = ?", [selectedTimezone]);        
+           // db.run("UPDATE newTest SET col1 = ?", [selectedTimezone]);        
             db.each("SELECT * FROM newTest where col1 = 'hi'", function (err, row) {
                 //console.log('timezone: ' + row.col1);
                 tempusername = row.col1;
