@@ -24,6 +24,7 @@ app.use(express.static(__dirname + '/tracking_assets/'));  // works for views in
 app.use('/', require('./controllers/home'));
 app.use('/login', require('./controllers/login'));
 app.use('/signup', require('./controllers/signup'));
+app.use('/user', require('./controllers/user'));
 
 
 // handle page not found errors

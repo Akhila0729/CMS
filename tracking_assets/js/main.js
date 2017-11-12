@@ -1,4 +1,5 @@
 function submit(){
+    debugger;
     console.log("function is called");
     var username = document.getElementById("username").value;
     var password = document.getElementById("password").value;
@@ -23,6 +24,6 @@ function submit(){
 }
 
 function reloadPage() {
-    window.location = '/login';
+    window.location = '/user';
     // $('#getTime')[0].click();
 }

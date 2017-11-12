@@ -36,9 +36,10 @@ api.post('/', function(req, res){
         
     });
     // db.close();
+    res.send("failed");
 
 
-    res.redirect("/login");
+    //res.redirect("./views/user.ejs");
 })
 
 
