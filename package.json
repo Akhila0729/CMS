@@ -1,32 +1,28 @@
 {
   "name": "childentracking",
-  
-"version": "0.0.1",
-  
-"description": "",
- 
- "main": "tracking.js",
-  
-"scripts": {
+  "version": "0.0.1",
+  "description": "",
+  "main": "tracking.js",
+  "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  
-"author": "avinash",
-  
-"license": "ISC",
-  
-"dependencies": {
-    "ejs": "^2.5.6",
-    "express": "^4.16.2",
-    "mongoose": "^4.12.4",
+  "author": "avinash",
+  "license": "ISC",
+  "dependencies": {
     "async": "latest",
+    "bluebird": "latest",
     "body-parser": "latest",
     "cookie-parser": "^1.4.3",
+    "ejs": "^2.5.6",
+    "express": "^4.16.2",
+    "express-session": "^1.15.6",
+    "mongoose": "^4.12.4",
     "morgan": "latest",
     "nedb": "latest",
+    "passport": "^0.4.0",
+    "pdfkit": "latest",
     "request": "latest",
-	"pdfkit": "latest",
-	"bluebird": "latest",
-	"request-promise": "latest"
+    "request-promise": "latest",
+    "sqlite3": "^3.1.13"
   }
 }
