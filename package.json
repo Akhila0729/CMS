@@ -4,13 +4,15 @@
   "description": "child monitoring system",
   "main": "app.js",
   "dependencies": {
+    "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.3",
     "ejs": "^2.5.7",
     "express": "^4.16.2",
     "express-session": "^1.15.6",
     "mongoose": "^4.12.4",
+    "morgan": "^1.9.0",
+    "parse": "^1.10.2",
     "passport": "^0.4.0",
-    "parse": "latest",
     "sqlite3": "^3.1.13"
   },
   "devDependencies": {},

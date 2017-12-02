@@ -3,7 +3,7 @@ var express = require('express'),
 
 // This method is called on launch of the application.
 router.get('/', function (req, res) {
-    res.render('index', { title: 'childrenmonitor'});
+    res.render('index');
 });
 
 router.get('/register', function (req, res) {
