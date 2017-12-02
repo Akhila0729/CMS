@@ -1,106 +1,17 @@
-<html>
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <title>Children Tracking</title>
-
-
-<!-- <body>
-        <nav class="navbar navbar-inverse">
-                <div class="container-fluid">
-                  <div class="navbar-header">
-                    <a class="navbar-brand" href="#">CHILDREN MONITORING SYSTEM</a>
-                  </div>
-                  <ul class="nav navbar-nav navbar-right">
-                    <li><a href="/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                    <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                  </ul>
-                </div>
-              </nav>
-
-</body> -->
-
-
-
-<style>
-div.container {
-    width: 100%;
-    /* border: 1px solid gray; */
-}
-
-header, footer {
-    padding: 1em;
-    color: white;
-    background-color: black;
-    clear: left;
-    text-align: center;
-}
-
-
-
-nav ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-nav {
-    float: left;
-    max-width: 160px;
-    margin: 0;
-    padding: 1em;
-}
-   
-nav ul a {
-    color:blue
-    text-decoration: none;
-}
-
-article {
-    margin-left: 170px;
-    border-left: 1px solid gray;
-    padding: 1em;
-    overflow: hidden;
-}
-</style>
-</head>
-<body>
-
+<% include ../partials/header %>
 <div class="container">
-
-<header>
-   <h1>Children Monitoring System</h1>
-</header>
-  
- <ul class="nav navbar-nav navbar-right">
-                    <li><a href="/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                    <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-  </ul>
-
+  <header>
+     <h1>Children Monitoring System</h1>
+  </header>
 
   <h1 align:centre>Children Monitoring System</h1>
   <div>
-  <p class="col-sm-8" style="text-align:center">
-  CMS is a web application that provides parents an option to look at their children location. 
-  Through this parents can add the details of their children and track thier travelling locations and also the travel history
-  Here you will be having signup and login options..
-  If you are already a logged in user then you can enter your credentails to login.</p>
-
-  <img src="images.jpg" width="670px" height="335px">
-  
+    <p class="col-sm-8" style="text-align:center">
+      CMS is a web application that provides parents an option to look at their children location. 
+      Through this parents can add the details of their children and track thier travelling locations and also the travel history
+      Here you will be having signup and login options..
+      If you are already a logged in user then you can enter your credentails to login.
+    </p>     
+  </div>
 </div>
-
-
-
-</div>
-<img src="children.jpg" width ="300px" height="300px">
-
-</body>
-<br><br><br><br><br><br><br><br>
-<br><br><br><br><br><br><br><br>
-<footer>Copyright &copy; cmswebteam.com</footer>
-</html>
-
+<% include ../partials/footer %>

@@ -27,3 +27,26 @@ function reloadPage() {
     window.location = '/user';
     // $('#getTime')[0].click();
 }
+
+function form() {
+    var username = document.getElementById("#username");
+    var password = document.getElementById("#password");
+
+        $(document).ready(function () {
+        $('#memployboxes-1').change(function () {
+            $('#motherdiv').fadeIn();
+        });
+        $('#memployboxes-0').change(function () {
+            $('#motherdiv').fadeOut();
+        });
+        $('#femployboxes-1').change(function () {
+            $('#fatherdiv').fadeIn();
+        });
+        $('#femployboxes-0').change(function () {
+            $('#fatherdiv').fadeOut();
+        });
+
+    });
+};
+
+form();

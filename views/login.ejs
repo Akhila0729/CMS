@@ -1,150 +1,31 @@
-<html>
-
-<head> <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    
-    <title>Login</title>
-    <link rel="stylesheet" href="/css/login.css">
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" ></script>
-    <script type="text/javascript" src="/js/main.js"></script>
-
-     <style>
-div.container {
-    width: 100%;
-    border: 1px solid gray;
-}
-
-header, footer {
-    padding: 1em;
-    color: white;
-    background-color: black;
-    clear: left;
-    text-align: center;
-}
-
-
-
-nav ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-nav {
-    float: left;
-    max-width: 160px;
-    margin: 0;
-    padding: 1em;
-}
-
-   
-nav ul a {
-    text-decoration: none;
-}
-
-article {
-    margin-left: 170px;
-    border-left: 1px solid gray;
-    padding: 1em;
-    overflow: hidden;
-}
-h1.nice {
-    font-family: 'Lobster', cursive;
-}
-body {
-  	background-color: #ffffff;
-  	font-family: 'Montserrat', sans-serif;
-    font-weight: 400;
-    font-size: 14px;
-    color: #555;
-
-    -webkit-font-smoothing: antialiased;
-    -webkit-overflow-scrolling: touch;
-}
-input[type='number'] {
-    -moz-appearance:textfield;
-}
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-    display: none;
-    -webkit-appearance: none;
-    margin: 0;
-}
-</style>
-</head>
-<header>
-   <h1>Children Monitoring System</h1>
-</header>
-  
- <ul class="nav navbar-nav navbar-right">
-                    <li><a href="/"><span class="glyphicon glyphicon-user"></span> Home</a></li>
-                    <li><a href="/signup"><span class="glyphicon glyphicon-log-in"></span> signup</a></li>
-  </ul>
-
-<body>
-    <br><br><br>
-    <a href="/" id="getTime" style="display:none"></a>
-    <div class="container"> 
-            <div class="text-center">
-                    <h1 class="nice">Login Form</h1>
-                </div>    
-            <form class="form-horizontal" method="post"
-                action="#">  
-                <!-- firstname input-->
-                <div class="form-group">
-                        <label class="col-md-4 control-label" for="password">Username</label>        
-                        <div class="col-md-4">
-                            <input id="phone" name="phone" type="number" placeholder="username"
-                                   class="form-control input-md" required="">
-                            <span class="help-block">Please enter your username</span>
-                        </div>
-                    </div>
-                    <!-- firstname input-->
-                <div class="form-group">
-                        <label class="col-md-4 control-label" for="password">Password</label>        
-                        <div class="col-md-4">
-                            <input id="phone" name="phone" type="number" placeholder="password"
-                                   class="form-control input-md" required="">
-                            <span class="help-block">Please enter your password</span>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                            <label class="col-md-4 control-label" for="button1id"></label>        
-                            <div class="col-md-8">
-                                <button type="submit" class="btn btn-info">Login</button>
-                                                    </div>
-                        </div>
-            </form> 
-            <!-- <input type="text" placeholder="Email ID" id="username" name="username">
-            <input type="text" placeholder="password" id="password" name="password">
-            <input type="submit" id="submitButton" value="Sign In" onclick="submit()"> -->
-    </div>
-
-<script>
-    var username = document.getElementById("#username");
-    var password = document.getElementById("#password");
-</script>
- <script>
-        $(document).ready(function () {
-        $('#memployboxes-1').change(function () {
-            $('#motherdiv').fadeIn();
-        });
-        $('#memployboxes-0').change(function () {
-            $('#motherdiv').fadeOut();
-        });
-        $('#femployboxes-1').change(function () {
-            $('#fatherdiv').fadeIn();
-        });
-        $('#femployboxes-0').change(function () {
-            $('#fatherdiv').fadeOut();
-        });
-
-    });
-        
-        </script>
-</body>
-<br><br><br><br><br><br><br><br><br><br><br>
-<footer>Copyright &copy; cmswebteam.com</footer>
-</html>
+<% include ../partials/header %>
+  <div class="container"> 
+      <div class="text-center">
+          <h1 class="nice">Login Form</h1>
+      </div>    
+      <form class="form-horizontal" action="/login" method="post" >  
+          <!-- firstname input-->
+          <div class="form-group">
+                <label class="col-md-4 control-label" for="password">Username</label>        
+                <div class="col-md-4">
+                    <input id="phone" name="phone" type="number" placeholder="username" class="form-control input-md" required="">
+                    <span class="help-block">Please enter your username</span>
+                </div>
+          </div>
+          <!-- firstname input-->
+          <div class="form-group">
+                <label class="col-md-4 control-label" for="password">Password</label>        
+                <div class="col-md-4">
+                    <input id="phone" name="phone" type="number" placeholder="password" class="form-control input-md" required="">
+                    <span class="help-block">Please enter your password</span>
+                </div>
+          </div>
+          <div class="form-group">
+              <label class="col-md-4 control-label" for="button1id"></label>        
+                <div class="col-md-8">
+                    <button type="submit" class="btn btn-info">Login</button>
+                </div>
+          </div>
+      </form>     
+  </div>
+<% include ../partials/footer %>
