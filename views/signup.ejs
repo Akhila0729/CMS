@@ -48,6 +48,29 @@ article {
     padding: 1em;
     overflow: hidden;
 }
+h1.nice {
+    font-family: 'Lobster', cursive;
+}
+body {
+  	background-color: #ffffff;
+  	font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: #555;
+
+    -webkit-font-smoothing: antialiased;
+    -webkit-overflow-scrolling: touch;
+}
+input[type='number'] {
+    -moz-appearance:textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    display: none;
+    -webkit-appearance: none;
+    margin: 0;
+}
 </style>
 </head>
  <header>
@@ -62,15 +85,121 @@ article {
     
 
     
-    <div class="login">
-        <input type="text" placeholder="Email ID" id="username">
-        <input type="password" placeholder="password" id="password">
-        <input type="text" placeholder="Renter Password" id="username">
-        <input href="file:///C:/GDP1/SignupPage.html" type="submit" value="Sign Up">
-  
+        <div class="container">
+            <div class="text-center">
+                <h1 class="nice">Registration Form</h1>
+            </div>
+            <form class="form-horizontal" method="post"
+                  action="#">
+                <!-- firstname input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="password">Firstname</label>        
+                    <div class="col-md-4">
+                        <input id="phone" name="phone" type="number" placeholder="Firstname"
+                               class="form-control input-md" required="">
+                        <span class="help-block">Please enter your Firstname</span>
+                    </div>
+                </div>
+        
+                 <!-- lastname input-->
+                 <div class="form-group">
+                    <label class="col-md-4 control-label" for="password">Lastname</label>        
+                    <div class="col-md-4">
+                        <input id="phone" name="phone" type="number" placeholder="Lastname"
+                               class="form-control input-md" required="">
+                        <span class="help-block">Please enter your Lastname</span>
+                    </div>
+                </div>
+                
+                <!-- user name-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="password">User name</label>        
+                    <div class="col-md-4">
+                        <input id="phone" name="phone" type="number" placeholder="username"
+                               class="form-control input-md" required="">
+                        <span class="help-block">Please enter your Username</span>
+                    </div>
+                </div>
+        
+                
+                <!-- Gender Input -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="checkboxes">Gender</label>
+        
+                    <div class="col-md-4">
+                        <div class="checkbox">
+                            <label>
+                                <input name="genderboxes" id="genderboxes-0" value="1" type="radio">
+                                Male
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input name="genderboxes" id="genderboxes-1" value="2" type="radio">
+                                Female
+                            </label>
+                        </div>
+                        <span class="help-block">Please select your Gender</span>
+        
+                    </div>
+                </div>
+                <!-- Email input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="password">Email</label>
+        
+                    <div class="col-md-4">
+                        <input id="email" name="email" type="email" placeholder="Email"
+                               class="form-control input-md" required="">
+                        <span class="help-block">Please type in your email</span>
+                    </div>
+                </div>
+                <!-- address input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="password">Address</label>        
+                    <div class="col-md-4">
+                        <input id="phone" name="phone" type="number" placeholder="Address"
+                               class="form-control input-md" required="">
+                        <span class="help-block">Please enter your Address</span>
+                    </div>
+                </div>
+                <!-- Phone input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="password">Phone</label>        
+                    <div class="col-md-4">
+                        <input id="phone" name="phone" type="number" placeholder="Phone number"
+                               class="form-control input-md" required="">
+                        <span class="help-block">Please provide your Mobile Number</span>
+                    </div>
+                </div>
+                <!-- Button (Double) -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="button1id"></label>        
+                    <div class="col-md-8">
+                        <button type="submit" class="btn btn-info">Register</button>
+                                            </div>
+                </div>
+            </form>
+        </div>     
+        
+        <script>
+        $(document).ready(function () {
+        $('#memployboxes-1').change(function () {
+            $('#motherdiv').fadeIn();
+        });
+        $('#memployboxes-0').change(function () {
+            $('#motherdiv').fadeOut();
+        });
+        $('#femployboxes-1').change(function () {
+            $('#fatherdiv').fadeIn();
+        });
+        $('#femployboxes-0').change(function () {
+            $('#fatherdiv').fadeOut();
+        });
 
-      
-    </div>
+    });
+        
+        </script>
+        <!-- <input href="file:///C:/GDP1/SignupPage.html" type="submit" value="Sign Up"> -->
 </body>
 <br><br><br><br><br><br><br><br>
 <footer>Copyright &copy; cmswebteam.com</footer>
