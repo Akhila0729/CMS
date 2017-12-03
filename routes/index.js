@@ -21,6 +21,7 @@ router.post('/register', function (req, res) {
 	user.set("gender", req.body.user["gender"]);
 	user.set("firstName", req.body.user["fname"]);
 	user.set("lastName", req.body.user["lname"]);
+	user.set("address", req.body.user["address"]);
 	user.set("phone",req.body.user["phone"]);
 	user.signUp(null, {
 	    success: function(result) {
