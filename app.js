@@ -8,13 +8,13 @@ var Parse      = require("parse/node"),
 	http       = require("http").Server(app),
 	app        = express();
 //importing routes
-var indexRoutes = require(".routes/index"),
-	userRoutes  = require(".routes/user");
+var indexRoutes = require("./routes/index"),
+	userRoutes  = require("./routes/user");
 //configuring parse database
 const appId  = "WZ7jM1yi3Do7Ekt0CZ9immXv4ahpKsK4vFiM5Lsf",
 	javakey  = "xv3hAAweUFPjdSoqbq1cZsQfmnZBjbxxtt0Ym3iv";
 Parse.initialize(appId,javakey);
-Parse.serverURL("https://parseapi.back4app.com/");
+Parse.serverURL="https://parseapi.back4app.com/";
 //configuring application
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended:true}));
