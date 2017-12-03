@@ -25,7 +25,7 @@ app.use(session({
 	resave: false,
 	saveUninitialized: false
 }));
-app.set("view",path.resolve(__dirname,"views"));
+app.set("views",path.resolve(__dirname,"views"));
 app.set("view engine","ejs");
 
 app.use(function(req,res,next){
