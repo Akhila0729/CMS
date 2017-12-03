@@ -31,7 +31,11 @@ app.set("view engine","ejs");
 app.use(function(req,res,next){
 	res.locals.error   = req.flash("error");
 	res.locals.success = req.flash("success");
+	next();
 });
+
+app.use(indexRoutes);
+app.use(userRoutes);
 
 app.use(function(req,res){
 	res.status(404).render("404");
