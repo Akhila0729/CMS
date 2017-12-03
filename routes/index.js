@@ -40,39 +40,16 @@ router.get('/login', function (req, res) {
     res.render('login');
 });
 
-router.post('/login',function(req,res){
-	Parse.User.logIn(req.body.username,req.body.password,{
-		success: function(user) {
-		    passport.authenticate('parse',function(err, user, info) {
-			    if (err) {
-			    	return res.status(400).json({payload : {error: info}, message : info.message});
-			 	}
-
-				if (!user) { 
-				   	return res.status(400).json({payload : {error: info}, message : info.message});
-				}
-
-				req.logIn(user, function(err) {
-					   	if (err) {
-					   		return res.status(400).json({payload : {error: err}, message : info.message});
-						}
-					 	res.render("user");
-						return res.json({
-					   		payload : req.user,
-					   		message : "Authentication successfull"
-					   	});
-					});
-				})(req,res);
-		},
-	    error: function(user, error) {
-			// The login failed. Check error to see why.
-			req.flash("error",error);
-			res.redirect("back");
-		}
-	});
+router.post("/login",passport.authenticate('parse',{
+	successRedirect: "/welcome",
+	failureRedirect: "/login"
+	}),function(req,res){
 });
 
 router.get('/logout', function (req, res) {
+	req.logout();
+	req.flash("success","successfully logged out");
+	res.redirect("/");
 });
  
 module.exports = router;

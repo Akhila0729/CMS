@@ -18,7 +18,16 @@ const appId  = "WZ7jM1yi3Do7Ekt0CZ9immXv4ahpKsK4vFiM5Lsf",
 	javakey  = "xv3hAAweUFPjdSoqbq1cZsQfmnZBjbxxtt0Ym3iv";
 Parse.initialize(appId,javakey);
 Parse.serverURL="https://parseapi.back4app.com/";
-
+app.use(bodyParser.urlencoded({extended:true}));
+app.use(logger("dev"));
+app.use(flash());
+app.use(session({
+	secret: "children-monitoring system",
+	resave: false,
+	saveUninitialized: false
+}));
+app.set("views",path.resolve(__dirname,"views"));
+app.set("view engine","ejs");
 var parseStrategy = new ParseStrategy({parseClient: Parse});
 // setting passport with the strategies
 passport.use(parseStrategy);
@@ -33,16 +42,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 //configuring application
 app.use(express.static("public"));
-app.use(bodyParser.urlencoded({extended:true}));
-app.use(logger("children-monitoring"));
-app.use(flash());
-app.use(session({
-	secret: "children-monitoring system",
-	resave: false,
-	saveUninitialized: false
-}));
-app.set("views",path.resolve(__dirname,"views"));
-app.set("view engine","ejs");
+
 
 
 
