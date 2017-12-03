@@ -3,11 +3,22 @@
 		<div class="container-fluid">  
 		   <ul class="nav navbar-nav navbar-right">
 		      <li><a href="/"><span class="glyphicon glyphicon-user"></span> Home</a></li>
-		      <li><a href="/register"><span class="glyphicon glyphicon-log-in"></span> signup</a></li>
+		      
+		      <% if(!user){ %>
+		        <li><a href="/register"><span class="glyphicon glyphicon-log-in"></span> signup</a></li>
 		      <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+		      <% } %>
 		   </ul>
 		</div>
 	</div>
+	<div class="container">
+		<% if(error && error.length>0){ %>
+			<div class="alert alert-danger" role="alert"> <%= error %> </div>
+		<% }else if(success && success.length>0){ %>
+			<div class="alert alert-success" role="alert"> <%= success %> </div>
+		<% } %>
+	</div>
+
 	<header>
 		<h1>Children Monitoring System</h1>
 	</header>

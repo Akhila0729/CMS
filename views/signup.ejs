@@ -4,84 +4,87 @@
         <div class="text-center">
             <h1 class="nice">Registration Form</h1>
         </div>
-        <form class="form-horizontal" action="/register" method="post" >
-            <!-- firstname input-->
-            <div class="form-group">
-                <label class="col-md-4 control-label" for="password">Firstname</label>        
-                <div class="col-md-4">
-                    <input id="phone" name="phone" type="number" placeholder="Firstname" class="form-control input-md" required>
-                    <span class="help-block">Please enter your Firstname</span>
-                </div>
-            </div>
-        
-            <!-- lastname input-->
-            <div class="form-group">
-                <label class="col-md-4 control-label" for="password">Lastname</label>        
-                <div class="col-md-4">
-                    <input id="phone" name="phone" type="number" placeholder="Lastname" class="form-control input-md" required>
-                    <span class="help-block">Please enter your Lastname</span>
-                </div>
-            </div>
-                
-            <!-- user name-->
-            <div class="form-group">
-                <label class="col-md-4 control-label" for="password">User name</label>        
-                <div class="col-md-4">
-                    <input id="phone" name="phone" type="number" placeholder="username" class="form-control input-md" required>
-                    <span class="help-block">Please enter your Username</span>
-                </div>
-            </div>        
-                
-            <!-- Gender Input -->
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="checkboxes">Gender</label>        
-              <div class="col-md-4">
-                    <div class="checkbox">
-                        <label>
-                            <input name="genderboxes" id="genderboxes-0" value="1" type="radio">
-                                Male
-                        </label>
+        <form class="well form-horizontal" action="/register" method="post" >
+            <fieldset>
+                <!-- firstname input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Firstname</label>        
+                    <div class="col-md-4">
+                        <input  name="user[fname]" type="text" placeholder="Firstname" class="form-control input-md" required>
                     </div>
-                    <div class="checkbox">
-                        <label>
-                            <input name="genderboxes" id="genderboxes-1" value="2" type="radio">
-                            Female
-                        </label>
+                </div>
+            
+                <!-- lastname input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Lastname</label>        
+                    <div class="col-md-4">
+                        <input name="user[lname]" type="text" placeholder="Lastname" class="form-control input-md" required>
                     </div>
-                    <span class="help-block">Please select your Gender</span>
-              </div>
-            </div>
-            <!-- Email input-->
-            <div class="form-group">
-                <label class="col-md-4 control-label" for="password">Email</label>
-                <div class="col-md-4">
-                    <input id="email" name="email" type="email" placeholder="Email" class="form-control input-md" required>
-                    <span class="help-block">Please type in your email</span>
                 </div>
-            </div>
-            <!-- address input-->
-            <div class="form-group">
-                <label class="col-md-4 control-label" for="password">Address</label>        
-                <div class="col-md-4">
-                    <input id="phone" name="phone" type="number" placeholder="Address" class="form-control input-md" required>
-                    <span class="help-block">Please enter your Address</span>
+                    
+                <!-- user name-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label">User name</label>        
+                    <div class="col-md-4">
+                        <input name="user[username]" type="text" placeholder="username" class="form-control input-md" required>
+                    </div>
+                </div> 
+
+                <!-- user name-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label">password</label>        
+                    <div class="col-md-4">
+                        <input name="user[password]" type="password" placeholder="password" class="form-control input-md" required> 
+                    </div>
+                </div> 
+
+                <!-- user name-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label">re-enter password</label>        
+                    <div class="col-md-4">
+                        <input name="user[repassword]" type="password" placeholder="re-enter password" class="form-control input-md" required>
+                    </div>
+                </div>        
+                    
+                <!-- Gender Input -->
+                <div class="form-group">
+                  <label class="col-md-4 control-label">Gender</label>        
+                  <div class="col-md-4">
+                        <select value="user[gender]" name="gender" class= "form-control">
+                            <option value="user[gender]" >male</option>
+                            <option value="user[gender]">female</option>
+                        </select>
+                  </div>
                 </div>
-            </div>
-            <!-- Phone input-->
-            <div class="form-group">
-                <label class="col-md-4 control-label" for="password">Phone</label>        
-                <div class="col-md-4">
-                    <input id="phone" name="phone" type="number" placeholder="Phone number" class="form-control input-md" required>
-                    <span class="help-block">Please provide your Mobile Number</span>
+                <!-- Email input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Email</label>
+                    <div class="col-md-4">
+                        <input  name="user[email]" type="email" placeholder="Email" class="form-control input-md" required>
+                    </div>
                 </div>
-            </div>
-            <!-- Button (Double) -->
-            <div class="form-group">
-                <label class="col-md-4 control-label" for="button1id"></label>        
-                <div class="col-md-8">
-                    <button type="submit" class="btn btn-info">Register</button>
+                <!-- address input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Address</label>        
+                    <div class="col-md-4">
+                        <input name="user[address]" type="text" placeholder="Address" class="form-control input-md" required>
+                    </div>
                 </div>
-            </div>
+                <!-- Phone input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="password">Phone</label>        
+                    <div class="col-md-4">
+                        <input name="user[phone]" type="number" placeholder="Phone number" class="form-control input-md" required>
+                    </div>
+                </div>
+                <!-- Button (Double) -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label"></label>        
+                    <div class="col-md-8">
+                        <button type="submit" class="btn btn-info">Register</button>
+                    </div>
+                </div>
+            </fieldset>
         </form>
     </div> 
 <% include ./partials/footer %>    
