@@ -45,12 +45,36 @@ router.post("/login",passport.authenticate('parse',{
 	successRedirect: "/welcome",
 	failureRedirect: "/login"
 	}),function(req,res){
+		if(req.user["emailVerified"]){
+			req.flash("success","successfully logged in");
+		}else{
+			req.flash("warnig","successfully logged in...but don't forget to verify your email");
+		}
 });
 
 router.get('/logout', function (req, res) {
 	req.logout();
 	req.flash("success","successfully logged out");
 	res.redirect("/");
+});
+
+router.get("/forgotPassword",function(req,res){
+	res.render("forgotpassword")
+});
+
+router.post("/forgotPassword",function(req,res){
+	Parse.User.requestPasswordReset(req.body.emailID, {
+    success: function() {
+    // Password reset request was sent successfully
+    req.flash("success","Password reset link was emailed to your registered email");
+    res.redirect("/");
+    },
+    error: function(error) {
+      // Show the error message somewhere
+      req.flash("error","email was wrong or not found in our system");
+      res.redirect("back");
+    }
+  });
 });
  
 module.exports = router;

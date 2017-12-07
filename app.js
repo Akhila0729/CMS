@@ -50,6 +50,7 @@ app.use(function(req,res,next){
 	res.locals.user = req.user;
 	res.locals.error   = req.flash("error");
 	res.locals.success = req.flash("success");
+	res.locals.warning = req.flash("warning");
 	next();
 });
 
@@ -62,4 +63,4 @@ app.use(function(req,res){
 
 app.listen(process.env.PORT || 8081,process.env.IP,function(){
 	console.log("children-monitoring system has started");
-})
+});
