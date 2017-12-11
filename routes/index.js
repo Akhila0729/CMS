@@ -45,6 +45,7 @@ router.post("/login",passport.authenticate('parse',{
 	successRedirect: "/welcome",
 	failureRedirect: "/login"
 	}),function(req,res){
+		
 		if(req.user["emailVerified"]){
 			req.flash("success","successfully logged in");
 		}else{
