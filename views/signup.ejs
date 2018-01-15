@@ -1,90 +1,108 @@
 <% include ./partials/header %>
-<% include ./partials/navBar %>
-  <div class="container">
+
+    <div class="container-fluid">
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <a href="/">
+                    <span class="glyphicon glyphicon-user"></span> Home</a>
+            </li>
+            <li>
+                <a href="/login">
+                    <span class="glyphicon glyphicon-log-in"></span> Login</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="container">
         <div class="text-center">
             <h1 class="nice">Registration Form</h1>
         </div>
-        <form class="well form-horizontal" action="/register" method="post" >
+        <form class="well form-horizontal" action="/register" method="post">
             <fieldset>
                 <!-- firstname input-->
                 <div class="form-group">
-                    <label class="col-md-4 control-label">Firstname</label>        
+                    <label class="col-md-4 control-label">Firstname</label>
                     <div class="col-md-4">
-                        <input  name="user[fname]" type="text" placeholder="Firstname" class="form-control input-md" minlength="5" maxlength="32" required>
+                        <input name="user[fname]" type="text" placeholder="Firstname" class="form-control input-md" minlength="5" maxlength="32"
+                            required>
                     </div>
                 </div>
-            
+
                 <!-- lastname input-->
                 <div class="form-group">
-                    <label class="col-md-4 control-label">Lastname</label>        
+                    <label class="col-md-4 control-label">Lastname</label>
                     <div class="col-md-4">
                         <input name="user[lname]" type="text" placeholder="Lastname" class="form-control input-md" minlength="4" maxlength="15" required>
                     </div>
                 </div>
-                    
-                <!-- user name-->
-                <div class="form-group">
-                    <label class="col-md-4 control-label">User name</label>        
-                    <div class="col-md-4">
-                        <input name="user[username]" type="text" placeholder="username" class="form-control input-md"  minlength="8" maxlength="15" required>
-                    </div>
-                </div> 
 
                 <!-- user name-->
                 <div class="form-group">
-                    <label class="col-md-4 control-label">password</label>        
+                    <label class="col-md-4 control-label">User name</label>
                     <div class="col-md-4">
-                        <input name="user[password]" type="password" placeholder="password" class="form-control input-md"  minlength="8" maxlength="20" required> 
+                        <input name="user[username]" type="text" placeholder="username" class="form-control input-md" minlength="8" maxlength="15"
+                            required>
                     </div>
-                </div> 
+                </div>
 
                 <!-- user name-->
                 <div class="form-group">
-                    <label class="col-md-4 control-label">re-enter password</label>        
+                    <label class="col-md-4 control-label">password</label>
                     <div class="col-md-4">
-                        <input name="user[repassword]" type="password" placeholder="re-enter password" class="form-control input-md" minlength="8" maxlength="20" required>
+                        <input name="user[password]" type="password" placeholder="password" class="form-control input-md" minlength="8" maxlength="20"
+                            required>
                     </div>
-                </div>        
-                    
+                </div>
+
+                <!-- user name-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label">re-enter password</label>
+                    <div class="col-md-4">
+                        <input name="user[repassword]" type="password" placeholder="re-enter password" class="form-control input-md" minlength="8"
+                            maxlength="20" required>
+                    </div>
+                </div>
+
                 <!-- Gender Input -->
                 <div class="form-group">
-                  <label class="col-md-4 control-label">Gender</label>        
-                  <div class="col-md-4">
-                        <select  name="user[gender]" class= "form-control">
-                            <option value="male" >male</option>
+                    <label class="col-md-4 control-label">Gender</label>
+                    <div class="col-md-4">
+                        <select name="user[gender]" class="form-control">
+                            <option value="male">male</option>
                             <option value="female">female</option>
                         </select>
-                  </div>
+                    </div>
                 </div>
                 <!-- Email input-->
                 <div class="form-group">
                     <label class="col-md-4 control-label">Email</label>
                     <div class="col-md-4">
-                        <input  name="user[email]" type="email" placeholder="Email" class="form-control input-md" required>
+                        <input name="user[email]" type="email" placeholder="Email" class="form-control input-md" required>
                     </div>
                 </div>
                 <!-- address input-->
                 <div class="form-group">
-                    <label class="col-md-4 control-label">Address</label>        
+                    <label class="col-md-4 control-label">Address</label>
                     <div class="col-md-4">
                         <input name="user[address]" type="text" placeholder="Address" class="form-control input-md">
                     </div>
                 </div>
                 <!-- Phone input-->
                 <div class="form-group">
-                    <label class="col-md-4 control-label">Phone</label>        
+                    <label class="col-md-4 control-label">Phone</label>
                     <div class="col-md-4">
-                        <input name="user[phone]" type="number" placeholder="Phone number" class="form-control input-md" minlength="10" maxlength="10" required>
+                        <input name="user[phone]" type="number" placeholder="Phone number" class="form-control input-md" minlength="10" maxlength="10"
+                            required>
                     </div>
                 </div>
                 <!-- Button (Double) -->
                 <div class="form-group">
-                    <label class="col-md-4 control-label"></label>        
+                    <label class="col-md-4 control-label"></label>
                     <div class="col-md-8">
                         <button type="submit" class="btn btn-info">Register</button>
                     </div>
                 </div>
             </fieldset>
         </form>
-    </div> 
-<% include ./partials/footer %>    
+    </div>
+    <% include ./partials/footer %>
