@@ -8,16 +8,19 @@ var Parse      = require("parse/node"),
 	express    = require("express"),
 	session    = require("express-session"),
 	app        = express(),
-	http       = require("http").Server(app);
+	http       = require("http").Server(app),
+	Backendless = require("backendless"),
+ 	constants = require("./configurations/config");
 //importing routes
 var indexRoutes = require("./routes/index"),
 	userRoutes  = require("./routes/user");
 
-//configuring parse database
-const appId  = "WZ7jM1yi3Do7Ekt0CZ9immXv4ahpKsK4vFiM5Lsf",
-	javakey  = "xv3hAAweUFPjdSoqbq1cZsQfmnZBjbxxtt0Ym3iv";
-Parse.initialize(appId,javakey);
-Parse.serverURL="https://parseapi.back4app.com/";
+//Configuring Backendless Database
+var APP_ID = constants.Database_APP_ID;
+var API_KEY = constants.Database_API_KEY;
+Backendless.serverURL = constants.Database_server_URL;
+Backendless.initApp(APP_ID, API_KEY);
+                    
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(logger("dev"));
 app.use(flash());
@@ -42,9 +45,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 //configuring application
 app.use(express.static("public"));
-
-
-
 
 app.use(function(req,res,next){
 	res.locals.user = req.user;
