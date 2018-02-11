@@ -41,6 +41,32 @@ router.get('/login', function (req, res) {
     res.render('login');
 });
 
+router.get('/userpage', function (req, res) {
+    res.render('userpage');
+});
+
+router.get('/profile', function (req, res) {
+    res.render('profile');
+});
+
+router.get('/settings', function (req, res) {
+    res.render('settings');
+});
+
+router.get('/record', function (req, res) {
+    res.render('record');
+});
+
+router.get('/alert', function (req, res) {
+    res.render('alert');
+});
+
+router.get('/about', function (req, res) {
+    res.render('about');
+});
+
+
+
 router.post("/login",function(req,res){
 		function userLoggedIn(user){
 			res.redirect("/welcome");
