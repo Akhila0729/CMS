@@ -41,8 +41,8 @@ router.get('/login', function (req, res) {
     res.render('login');
 });
 
-router.get('/userpage', function (req, res) {
-    res.render('userpage');
+router.get('/userchild', function (req, res) {
+    res.render('user_child');
 });
 
 router.get('/profile', function (req, res) {
@@ -63,6 +63,10 @@ router.get('/alert', function (req, res) {
 
 router.get('/about', function (req, res) {
     res.render('about');
+});
+
+router.get('/user', function (req, res) {
+    res.render('user');
 });
 
 

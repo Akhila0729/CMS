@@ -50,3 +50,5 @@ function form() {
 };
 
 form();
+var optionvalue = document.getElementById("editphnnumber").value;
+console.log("the option value is "+optionvalue);
