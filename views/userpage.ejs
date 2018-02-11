@@ -1,0 +1,143 @@
+ <% include ./partials/header %>
+ <div class="container-fluid">
+	<ul class="nav navbar-nav navbar-right">
+		<li>
+			<a href="/logout">
+				<span class="glyphicon glyphicon-user"></span> Logout</a>
+		</li>
+	</ul>
+</div>
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-sm-2" style="background-color:powderblue;">
+			<ul style="list-style-type:none">
+				<li class="active">
+					<a data-toggle="pill" href="#addchild">Add Child</a>
+				</li>
+				<li>
+					<a data-toggle="pill" href="#removechild">Remove Child</a>
+				</li>
+				<li>
+					<a data-toggle="pill" href="#currentlocation">Current Location</a>
+				</li>
+				<li>
+					<a data-toggle="pill" href="#locationrecords">Location Records</a>
+				</li>
+			</ul>
+		</div>
+
+		<div class="col-sm-10">
+			<div class="tab-content">
+				<div id="addchild" class="tab-pane fade in active">
+					<h1 class="nice">ADD CHILD</h1>
+					<form class="form-horizontal" method="post" action="/addChild">
+						<!-- firstname input-->
+						<div class="form-group">
+							<label class="col-md-4 control-label" for="password">First Name</label>
+							<div class="col-md-4">
+								<input id="phone" name="firstname" type="text" placeholder="Firstname" class="form-control input-md" required="">
+								<span class="help-block">Please enter your Firstname</span>
+							</div>
+						</div>
+
+						<!-- lastname input-->
+						<div class="form-group">
+							<label class="col-md-4 control-label" for="password">Last Name</label>
+							<div class="col-md-4">
+								<input id="phone" name="lastname" type="text" placeholder="Lastname" class="form-control input-md" required="">
+								<span class="help-block">Please enter your Lastname</span>
+							</div>
+						</div>
+
+						<!-- Gender Input -->
+						<div class="form-group">
+							<label class="col-md-4 control-label" for="checkboxes">Gender</label>
+
+							<div class="col-md-4">
+								<div class="checkbox">
+									<label>
+										<input name="genderboxes" id="genderboxes-0" value="1" type="radio"> Male
+									</label>
+								</div>
+								<div class="checkbox">
+									<label>
+										<input name="genderboxes" id="genderboxes-1" value="2" type="radio"> Female
+									</label>
+								</div>
+								<span class="help-block">Please select your Gender</span>
+
+							</div>
+						</div>
+						<!-- Email input-->
+						<div class="form-group">
+							<label class="col-md-4 control-label" for="password">Email</label>
+
+							<div class="col-md-4">
+								<input id="email" name="email" type="email" placeholder="Email" class="form-control input-md" required="">
+								<span class="help-block">Please type in your email</span>
+							</div>
+						</div>
+						<!-- address input-->
+						<div class="form-group">
+							<label class="col-md-4 control-label" for="password">Address</label>
+							<div class="col-md-4">
+								<input id="phone" name="address" type="text" placeholder="Address" class="form-control input-md" required="">
+								<span class="help-block">Please enter your Address</span>
+							</div>
+						</div>
+						<!-- Phone input-->
+						<div class="form-group">
+							<label class="col-md-4 control-label" for="password">Phone</label>
+							<div class="col-md-4">
+								<input id="phone" name="mobilenumber" type="number" placeholder="Phone number" class="form-control input-md" required="">
+								<span class="help-block">Please provide your Mobile Number</span>
+							</div>
+						</div>
+						<!-- Button (Double) -->
+						<div class="form-group">
+							<label class="col-md-4 control-label" for="button1id"></label>
+							<div class="col-md-8">
+								<button type="submit" class="btn btn-info">Register</button>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div id="removechild" class="tab-pane fade">
+					<h3>REMOVE CHILD</h3>
+					<p>Under Construction.</p>
+				</div>
+				<div id="currentlocation" class="tab-pane fade">
+					<h3>CURRENT LOCATION</h3>
+					<p>Under Construction.</p>
+				</div>
+				<div id="locationrecords" class="tab-pane fade">
+					<h3>LOCATION RECORDS</h3>
+					<p>Under Construction.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+ 	
+ <% include ./partials/footer %>
