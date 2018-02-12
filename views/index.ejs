@@ -9,10 +9,11 @@ body {margin:0;}
 .topnav {
   overflow: hidden;
   background-color: #333;
+  
 }
 
 .topnav a {
-  float: left;
+  float: right;
   color: #f2f2f2;
   text-align: center;
   padding: 14px 16px;
@@ -29,21 +30,33 @@ body {margin:0;}
   background-color: #4CAF50;
   color: white;
 }
+
+#info{
+  font-size: 20px;
+
+}
 </style>
 </head>
 <body>
 
   <div class="topnav">
-    <a href="/register">
-      <span class="glyphicon glyphicon-user"></span> Sign Up</a>
-      
-      <a href="/login">
-      <span class="glyphicon glyphicon-log-in"></span> Login</a>
+    <div class = "row">
+        <div class="col-md-3"></div>
+        <div class="col-md-5"></div>
+        <div class="col-md-2">
+         <a href="/register">
+         <span class="glyphicon glyphicon-user" ></span> Sign Up</a>
+        </div>
+        <div class="col-md-2">
+          <a href="/login">
+          <span class="glyphicon glyphicon-log-in"></span> Login</a>
+        </div>
+      </div>
     </div>
 
 
 
-      <div class="container-fluid">
+      <!-- <div class="container-fluid">
         <ul class="nav navbar-nav navbar-right">
           <li>
             <a href="/register">
@@ -55,21 +68,24 @@ body {margin:0;}
               <span class="glyphicon glyphicon-log-in"></span> Login</a>
           </li>
         </ul>
-      </div>
+      </div> -->
       
   
       <div class="container-fluid">
         <div class="row">
-          <p>
-            CMS is a web application that provides parents an option to look at their children location. Through this parents can add
-            the details of their children and track thier travelling locations and also the travel history Here you will be
-            having signup and login options. If you are already a logged in user then you can enter your credentails to login
-            in.
+            <div class="col-md-3">
+                <img src="/images/children.jpg">
+            </div>
+            <div class="col-md-9">
+          <p id = "info" style="color:black;">
+            CMS is a web application that provides parents an option to look at their children location. 
+            Through this parents can add the details of their children and track thier travelling locations 
+            and also the travel history Here you will be having signup and login options. If you are already
+            a logged in user then you can enter your credentails to loging in.
           </p>
         </div>
-        <div>
-          <img src="/images/children.jpg">
-        </div>
+      </div>
+        
   
       </div>
   
