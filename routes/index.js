@@ -1,8 +1,10 @@
 var express = require('express'),
 	Parse   = require("parse/node"),
 	passport = require('passport'),
-	router = express.Router();
-	Backendless = require("backendless");
+	router = express.Router(),
+	middleware = require("../middleware"),
+	Backendless = require("backendless"),
+	database = require("../configurations/database");
 
 var userSession;
 // This method is called on launch of the application.
@@ -37,41 +39,42 @@ router.post('/register', function (req, res) {
 	Backendless.UserService.register(user).then(userRegistered).catch(gotError);    
 });
 
-router.get('/login', function (req, res) {
+router.get('/login', middleware.isLoggedIn, function (req, res) {
     res.render('login');
 });
 
-router.get('/userchild', function (req, res) {
+router.get('/userchild', middleware.isLoggedIn, function (req, res) {
     res.render('user_child');
 });
 
-router.get('/profile', function (req, res) {
+router.get('/profile', middleware.isLoggedIn, function (req, res) {
     res.render('profile');
 });
 
-router.get('/settings', function (req, res) {
+router.get('/settings', middleware.isLoggedIn, function (req, res) {
     res.render('settings');
 });
 
-router.get('/record', function (req, res) {
+router.get('/record', middleware.isLoggedIn, function (req, res) {
     res.render('record');
 });
 
-router.get('/alert', function (req, res) {
+router.get('/alert', middleware.isLoggedIn, function (req, res) {
     res.render('alert');
 });
 
-router.get('/about', function (req, res) {
+router.get('/about', middleware.isLoggedIn, function (req, res) {
     res.render('about');
 });
 
-router.get('/user', function (req, res) {
+router.get('/user', middleware.isLoggedIn, function (req, res) {
     res.render('user');
 });
 
 
 
-router.post("/login",function(req,res){
+router.post("/login",function(req,res){		
+		
 		function userLoggedIn(user){
 			res.redirect("/welcome");
 		}

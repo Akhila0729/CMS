@@ -15,11 +15,7 @@ var Parse      = require("parse/node"),
 var indexRoutes = require("./routes/index"),
 	userRoutes  = require("./routes/user");
 
-//Configuring Backendless Database
-var APP_ID = constants.Database_APP_ID;
-var API_KEY = constants.Database_API_KEY;
-Backendless.serverURL = constants.Database_server_URL;
-Backendless.initApp(APP_ID, API_KEY);
+require("./configurations/database");
                     
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(logger("dev"));
@@ -62,5 +58,5 @@ app.use(function(req,res){
 });
 
 app.listen(process.env.PORT || 4001 ,process.env.IP,function(){
-	console.log("children-monitoring system has started");
+	console.log("children-monitoring system has started on port: 4001");
 });
