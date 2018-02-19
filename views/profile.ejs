@@ -64,18 +64,17 @@
 			<div class="tab-content">
 				<div id="changeusername" class="tab-pane fade in active">
                     <h2 class="chnusername">CHANGE USERNAME</h2>
-                    <form class="form-horizontal" method="post" action="/changeusername">
+                    <form class="form-horizontal" method="post" action="/profile/changeuserame">
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="password">Old UserName</label>
                             <div class="col-md-4">
-                                <input  name="old username" type="text" placeholder="Please enter your old username" class="form-control input-md" required="">
-                                
+                                <input  name="oldUsername" type="text" placeholder="Please enter your old username" class="form-control input-md" required="">                                
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="password">New UserName</label>
                             <div class="col-md-4">
-                                <input name="" type="text" placeholder="Please enter your new username" class="form-control input-md" required="">
+                                <input name="newUsername" type="text" placeholder="Please enter your new username" class="form-control input-md" required="">
                             </div>
                         </div>
                         <div class="form-group">
@@ -89,18 +88,18 @@
                 
                 <div id="changepassword" class="tab-pane fade">
                         <h2 class="chnpassword">CHANGE PASSWORD</h2>
-                        <form class="form-horizontal" method="post" action="/changepassword">
+                        <form class="form-horizontal" method="post" action="/profile/changePassword">
                             <div class="form-group">
-                                <label class="col-md-4 control-label" for="password">Old Password</label>
+                                <label class="col-md-4 control-label" for="password">User Name</label>
                                 <div class="col-md-4">
-                                    <input  name="old password" type="text" placeholder="Please enter your old password" class="form-control input-md" required="">
+                                    <input  name="oldPassword" type="text" placeholder="Please enter username" class="form-control input-md" required="">
                                     
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-md-4 control-label" for="password">New Password</label>
                                 <div class="col-md-4">
-                                    <input name="" type="text" placeholder="Please enter your new password" class="form-control input-md" required="">
+                                    <input name="newPassword" type="text" placeholder="Please enter your new password" class="form-control input-md" required="">
                                 </div>
                             </div>
                             <div class="form-group">
