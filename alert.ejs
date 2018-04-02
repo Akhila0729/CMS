@@ -1,0 +1,121 @@
+<% include ./partials/header %>
+<html>
+<head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		<style>
+			body {
+				margin: 0;
+            }
+
+			.topnav {
+				overflow: hidden;
+				background-color: #333;
+			}
+
+			.topnav a {
+				float: left;
+				color: #f2f2f2;
+				text-align: center;
+				padding: 14px 16px;
+				text-decoration: none;
+				font-size: 17px;
+			}
+
+			.topnav a:hover {
+				background-color: #ddd;
+				color: black;
+			}
+
+			.topnav a.active {
+				background-color: #4CAF50;
+				color: white;
+			}
+            .col-sm-10
+            {
+                margin: 15px;
+
+            }
+            
+		</style>
+</head>
+<body>
+    <div class="topnav">
+        <div class="container-fluid">
+            
+            <div class="row" id = "options" >
+
+                <div class="col-md-4" >
+                    <a data-toggle="pill" href="#setalertmode" >Set Alerts Mode</a>
+                </div>
+                <div class="col-md-4">
+                    <a data-toggle="pill" href="#editalertinginfo">Edit Alert System Info</a>
+                </div>
+
+                <div class="col-md-3">
+                    <a href="/user">Go Back</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-10">
+        <div class="tab-content">
+                <div id="setalertmode" class="tab-pane fade in active">
+                        <h2>Set Alert Mode</h2>
+                        <form class="form-horizontal" method="post" action="/setalertmode">
+                              <div class="radio">
+                                    <input type="radio" name="setoption" value = "sms" checked>SMS<br>
+                                    <input type="radio" name="setoption" value = "email">mail<br>
+                             </div>
+                        </form>
+                </div>
+                <div id="editalertinginfo" class="tab-pane fade">
+                    <h2>Edit Alerting System Info</h2>
+                    <form class="form-horizontal" method="post" action="/editalertinginfo">
+                        <div class="checkbox" id = "editphnnumber">
+                                <label><input type="checkbox" value="">Edit Phonenumber</label>
+                        </div>
+                        <div class="checkbox" id = "editemail">
+                                <label><input type="checkbox" value="">Edit email</label>
+                        </div>
+                            
+                    </form>
+                </div>
+
+
+
+
+
+
+
+
+        </div>
+    </div>
+</body>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <% include ./partials/footer %>
+</html>
