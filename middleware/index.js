@@ -1,6 +1,5 @@
-var middleware = {};
 
-middleware.isLoggedIn=function(req,res,next){
+var isLoggedIn =function(req,res,next){
 	function success(result){
 		return next();
 	}
@@ -11,4 +10,21 @@ middleware.isLoggedIn=function(req,res,next){
 	Backendless.UserService.isValidLogin().then(success).catch(error);
 }
 
-module.exports = middleware;
+module.exports.isLoggedIn = isLoggedIn;
+
+var getObjectID = function (tableName, Query, callback) {
+    var queryBuilder = Backendless.DataQueryBuilder.create().setWhereClause(Query);
+    var test = Backendless.Data.of(tableName).find(queryBuilder)
+        .then(function (result) {
+            if (result.length === 0) {
+                callback({ data: null });
+            } else {
+                callback({ data: result});
+            }
+        })
+        .catch(function (fault) {
+            console.log(fault);
+            // an error has occurred, the error code can be retrieved with fault.statusCode
+        });
+}
+module.exports.getObjectID = getObjectID

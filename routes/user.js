@@ -1,10 +1,13 @@
 var express = require('express'),
     middleware = require("../middleware"),
-    router = express.Router();
+    router = express.Router();    
 
-//This method is called when the user login successfully.
 router.get('/welcome', middleware.isLoggedIn, function (req, res) {
-    res.render('user', { title: 'User' });
+    var Query = "Parent_ID = '" + req.session.userObjectID[0].objectId + "'";
+    var tableName = "ChildTable";
+    middleware.getObjectID(tableName,Query,function (result) {
+            res.render('user', { title: 'User' , children: result.data });
+        })        
 });
 
 router.post('/addChild', middleware.isLoggedIn, function (req, res) {
@@ -13,8 +16,9 @@ router.post('/addChild', middleware.isLoggedIn, function (req, res) {
         childLastName: req.body.childLastName,
         childGender: req.body.childGender,
         childEmail: req.body.childEmail,
-        childAddress: req.body.childAddess,
-        childPhone: req.body.childPhone
+        childAddress: req.body.childAddress,
+        childPhone: req.body.childPhone,
+        Parent_ID: req.session.userObjectID
     }
 
     var childTable = Backendless.Data.of("ChildTable").save(childTable)
@@ -28,25 +32,10 @@ router.post('/addChild', middleware.isLoggedIn, function (req, res) {
         })
 });
 
-function objectID(tableName, Query, callback) {
-    var queryBuilder = Backendless.DataQueryBuilder.create().setWhereClause(Query);
-    var test = Backendless.Data.of(tableName).find(queryBuilder)
-        .then(function (result) {
-            if (result.length === 0) {
-                callback({ data: "noRecord" });
-            } else {
-                callback({ data: result[0].objectId });
-            }
-        })
-        .catch(function (fault) {
-            console.log(fault);
-            // an error has occurred, the error code can be retrieved with fault.statusCode
-        });
-}
 
 router.post('/removechild', middleware.isLoggedIn, function (req, res) {
     var whereClause = "childFirstName = '" + req.body.childFirstName + "' AND childLastName = '" + req.body.childLastName + "'";
-    objectID("childTable", whereClause, function (response) {
+    middleware.getObjectID("childTable", whereClause, function (response) {
         var objectId = response.data;
         if (objectId === "noRecord") {
             console.log("Invalid details");
