@@ -83,10 +83,12 @@
                 </div>
             </div>
         </div>
-
-    <h2>List of Childs for you</h2>
-
-    <table border='1' width='650' id="resulttable">
+        
+    
+        
+ <%  if(children != null) { %>
+        <h2 id = "headtag" >List of children </h2>
+    <table border='1'style="empty-cells:hide";width='650' id="resulttable">
         <thead>
         <tr onclick="addClick">
         <th class="hidden">ChildID</th>
@@ -97,9 +99,8 @@
         
         </tr>
         </thead>
-    <% var list =[]
-    list.push(children); %>
-    
+   
+
     <% children.forEach(function(record) { %>
                 <tr>  
                       <td class="hidden"><%=record.objectId%></td>
@@ -111,18 +112,8 @@
                 </tr>
             <% }); %>
             </table>
-
-<!-- 
-            <% children.forEach(function(record) { %>
-                <tr>
-                      <td><%=record.childFirstName+record.childLastName%></td> 
-                      <td><%=record.childGender%></td> 
-                      <td><%=record.childPhone%></td>
-                      <td><%=record.childEmail%></td>      
-                </tr>
-            <% }); %>
-            </table> -->
-
+    <% } %>
+       
 <br>
 <br>
 <br>
@@ -139,6 +130,10 @@
        var childObjectID_ToPost = $(this).children("td").html();
        alert($(this).children("td").html());
     });
+            
+           
+            
+   
     </script>
 
 
