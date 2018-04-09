@@ -113,8 +113,15 @@
             <% }); %>
             </table>
     <% } %>
-       
-       
+   <br>    
+    <h2>Current Location</h2>
+</div>
+<div class="col-md-3"></div>
+<div class="col-md-6" id="map"></div>
+<div class="col-md-3"></div>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3RaBAQdDLeYcpum-bTxVMvCuGvenG_SQ&callback=initMap" async
+    defer></script>  
 
 <% include ./partials/footer %>
 </body>
