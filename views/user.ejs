@@ -88,7 +88,7 @@
 
     <table border='1' width='650' id="resulttable">
         <thead>
-        <tr onclick="addClick">
+        <tr>
         <th class="hidden">ChildID</th>
         <th>ChildName</th>
         <th>Gender</th>
@@ -135,6 +135,39 @@
 <% include ./partials/footer %>
 </body>
 
+<script>
+    $("#resulttable tr").click(function() {
+       var childObjectID_ToPost = $(this).children("td").html();
+       alert($(this).children("td").html());
+    //    $.post("http://localhost:4002/user",{objectID: childObjectID_ToPost}, function(data){
+    //         if(data==='done')
+    //           {
+    //             alert("login success");
+    //           }
+    //       });
+
+
+
+
+    $.ajax({
+    'url': 'localhost:4002/user',
+    'type': 'POST',
+    'data':{objectID: childObjectID_ToPost},
+    'success': function(data){
+            if(data==='done')
+              {
+                alert("login success");
+              }
+            },
+    
+    'error': function(data)
+    {
+        alert("fail"+data);
+    } 
+  });
+
+});
+    </script>
 
 
 </html>

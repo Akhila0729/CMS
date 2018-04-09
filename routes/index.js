@@ -67,7 +67,10 @@ router.get('/about', middleware.isLoggedIn, function (req, res) {
 	res.render('about');
 });
 
-router.get('/user', middleware.isLoggedIn, function (req, res) {
+router.get('/user', middleware.isLoggedIn, function (req, res) 
+{
+	console.log("object id");
+	console.log(req.objectID);
 	res.render('user');
 });
 
