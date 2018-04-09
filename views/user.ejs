@@ -134,6 +134,12 @@
 <br>
 <% include ./partials/footer %>
 </body>
+        <script>
+    $("#resulttable tr").click(function() {
+       var childObjectID_ToPost = $(this).children("td").html();
+       alert($(this).children("td").html());
+    });
+    </script>
 
 <script>
     $("#resulttable tr").click(function() {
