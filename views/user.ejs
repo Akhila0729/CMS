@@ -83,18 +83,59 @@
                 </div>
             </div>
         </div>
-        <div>
-            <h2>Current Location</h2>
-        </div>
-        <div class="col-md-3"></div>
-        <div class="col-md-6" id="map"></div>
-        <div class="col-md-3"></div>
 
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3RaBAQdDLeYcpum-bTxVMvCuGvenG_SQ&callback=initMap" async
-            defer></script>
-            
-        <% include ./partials/footer %>
-    </body>
+    <h2>List of Childs for you</h2>
 
-    </html>
+    <table border='1' width='650' id="resulttable">
+        <thead>
+        <tr onclick="addClick">
+        <th class="hidden">ChildID</th>
+        <th>ChildName</th>
+        <th>Gender</th>
+        <th>Phonenumber</th>
+        <th>ChildEmail</th>
+        
+        </tr>
+        </thead>
+    <% var list =[]
+    list.push(children); %>
+    
+    <% children.forEach(function(record) { %>
+                <tr>  
+                      <td class="hidden"><%=record.objectId%></td>
+                      <td><%=record.childFirstName+record.childLastName%></td> 
+                      <td><%=record.childGender%></td> 
+                      <td><%=record.childPhone%></td>
+                      <td><%=record.childEmail%></td> 
+                                          
+                </tr>
+            <% }); %>
+            </table>
+
+<!-- 
+            <% children.forEach(function(record) { %>
+                <tr>
+                      <td><%=record.childFirstName+record.childLastName%></td> 
+                      <td><%=record.childGender%></td> 
+                      <td><%=record.childPhone%></td>
+                      <td><%=record.childEmail%></td>      
+                </tr>
+            <% }); %>
+            </table> -->
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<% include ./partials/footer %>
+</body>
+
+
+
+</html>
     
