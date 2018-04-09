@@ -23,7 +23,6 @@ body { background-image: radial-gradient( cover, rgba(92,100,111,1) 0%,rgba(31,3
   text-shadow: 0 -1px 0 rgba(0,0,0,0.2), 0 1px 0 #fff;
 }
 input[type="password"], input[type="text"] {
-  background: url('http://i.minus.com/ibhqW9Buanohx2.png') center left no-repeat, linear-gradient(top, #d6d7d7, #dee0e0);
   border: 1px solid #a1a3a3;
   border-radius: 4px;
   box-shadow: 0 1px #fff;
@@ -63,11 +62,10 @@ input[type="checkbox"]:checked {
   width: 87px;
   z-index: -1;
 }
-input[type="checkbox"]:checked + .toggle { background-position: 0 -16px }
+input[type="text"]:checked + .toggle { background-position: 0 -16px }
 .forgot {
   color: #7f7f7f;
   display: inline-block;
-  float: right;
   font: 12px/1 sans-serif;
   left: -19px;
   position: relative;
@@ -102,7 +100,7 @@ input[type="submit"] {
   box-shadow: inset 0px 1px 0px #2ab7ec, 0px 5px 0px 0px #497a78, 0px 10px 5px #999;
 }
 
-.shadow {
+.age {
   background: #000;
   border-radius: 12px 12px 4px 4px;
   box-shadow: 0 0 20px 10px #000;
