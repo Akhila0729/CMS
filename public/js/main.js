@@ -7,6 +7,21 @@ center: { lat: -34.397, lng: 150.644 },
 zoom: 8
 });
 }
+//code to retrieve the child object from 
+// function clickForObjectID()
+// {
+// $("#resulttable tr").click(function () {
+//   var childObjectID_ToPost = $(this).children("td").html();
+//   var data = {};
+//   data.childObjectID = $(this).children("td").html().trim();
+//   $.post('http://localhost:4002/welcome', data,
+//       function (data, status) {
+//           var parseData = $.parseJSON(data);
+//           console.log('success' + parseData);
+//       });
+// });
+// }
+
 
 // function submit(){
 //     debugger;

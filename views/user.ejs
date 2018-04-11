@@ -1,4 +1,5 @@
 <% include ./partials/header %>
+
     <!DOCTYPE html>
     <html>
 
@@ -6,6 +7,7 @@
         <title>Simple Map</title>
         <meta name="viewport" content="initial-scale=1.0">
         <meta charset="utf-8">
+        <script type="text/javascript" src="/js/main.js"></script>
         <style>
             body {
                 margin: 0;
@@ -83,119 +85,70 @@
                 </div>
             </div>
         </div>
-        
-    
-        
- <%  if(children != null) { %>
-        <h2 id = "headtag" >List of children </h2>
-    <table border='1'style="empty-cells:hide";width='650' id="resulttable">
-        <thead>
-        <tr>
-        <th class="hidden">ChildID</th>
-        <th>ChildName</th>
-        <th>Gender</th>
-        <th>Phonenumber</th>
-        <th>ChildEmail</th>
-        
-        </tr>
-        </thead>
-   
 
-    <% children.forEach(function(record) { %>
-                <tr>  
-                      <td class="hidden"><%=record.objectId%></td>
-                      <td><%=record.childFirstName+record.childLastName%></td> 
-                      <td><%=record.childGender%></td> 
-                      <td><%=record.childPhone%></td>
-                      <td><%=record.childEmail%></td> 
-                                          
-                </tr>
-            <% }); %>
+
+
+        <%  if(children != null) { %>
+            <h2 id="headtag">List of children </h2>
+            <table border='1' style="empty-cells:hide" ;width='650' id="resulttable">
+                <thead>
+                    <tr>
+                        <th class="hidden">ChildID</th>
+                        <th>ChildName</th>
+                        <th>Gender</th>
+                        <th>Phonenumber</th>
+                        <th>ChildEmail</th>
+
+                    </tr>
+                </thead>
+
+
+                <% children.forEach(function(record) { %>
+                    <tr>
+                        <td class="hidden">
+                            <%=record.objectId%>
+                        </td>
+                        <td>
+                            <%=record.childFirstName+record.childLastName%>
+                        </td>
+                        <td>
+                            <%=record.childGender%>
+                        </td>
+                        <td>
+                            <%=record.childPhone%>
+                        </td>
+                        <td>
+                            <%=record.childEmail%>
+                        </td>
+
+                    </tr>
+                    <% }); %>
             </table>
-    <% } %>
-   <br>    
-    <h2>Current Location</h2>
-</div>
-<div class="col-md-3"></div>
-<div class="col-md-6" id="map"></div>
-<div class="col-md-3"></div>
+            <% } %>
+                <br>
+                <h2>Current Location</h2>
+                </div>
+                <div class="col-md-3"></div>
+                <div class="col-md-6" id="map"></div>
+                <div class="col-md-3"></div>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3RaBAQdDLeYcpum-bTxVMvCuGvenG_SQ&callback=initMap" async
-    defer></script>  
+                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3RaBAQdDLeYcpum-bTxVMvCuGvenG_SQ&callback=initMap" async
+                    defer></script>
 
-<% include ./partials/footer %>
-</body>
-        
-       
-        
-        
-        
-        
-        <script>
-    $("#resulttable tr").click(function() {
-       var childObjectID_ToPost = $(this).children("td").html();
-       alert($(this).children("td").html());
-    });
-            
-    $("#resulttable tr").click(function () {
-
-            var childObjectID_ToPost = $(this).children("td").html();           
-
+                <% include ./partials/footer %>
+    </body>
+    <script>
+        $("#resulttable tr").click(function () {
+            alert("hi");
+            var childObjectID_ToPost = $(this).children("td").html();
             var data = {};
-
             data.childObjectID = $(this).children("td").html().trim();
-
-            $.post('http://localhost:4002/welcome',data,
-
-            function(data, status){
-
-                var parseData = $.parseJSON(data);
-
-                            console.log('success'+parseData);
-
-            });        
-
+            $.post('http://localhost:4002/welcome', data,
+                function (data, status) {
+                    var parseData = $.parseJSON(data);
+                    console.log('success' + parseData);
+                });
         });
-
-    </script> 
-            
-   
     </script>
 
-<script>
-    $("#resulttable tr").click(function() {
-       var childObjectID_ToPost = $(this).children("td").html();
-       alert($(this).children("td").html());
-    //    $.post("http://localhost:4002/user",{objectID: childObjectID_ToPost}, function(data){
-    //         if(data==='done')
-    //           {
-    //             alert("login success");
-    //           }
-    //       });
-
-
-
-
-    $.ajax({
-    'url': 'localhost:4002/user',
-    'type': 'POST',
-    'data':{objectID: childObjectID_ToPost},
-    'success': function(data){
-            if(data==='done')
-              {
-                alert("login success");
-              }
-            },
-    
-    'error': function(data)
-    {
-        alert("fail"+data);
-    } 
-  });
-
-});
-    </script>
-
-
-</html>
-    
+    </html>
