@@ -137,7 +137,27 @@
        alert($(this).children("td").html());
     });
             
-           
+    $("#resulttable tr").click(function () {
+
+            var childObjectID_ToPost = $(this).children("td").html();           
+
+            var data = {};
+
+            data.childObjectID = $(this).children("td").html().trim();
+
+            $.post('http://localhost:4002/welcome',data,
+
+            function(data, status){
+
+                var parseData = $.parseJSON(data);
+
+                            console.log('success'+parseData);
+
+            });        
+
+        });
+
+    </script> 
             
    
     </script>
