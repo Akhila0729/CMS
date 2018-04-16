@@ -15,7 +15,8 @@
     "parse": "latest",
     "passport": "^0.4.0",
     "passport-parse": "0.0.5",
-    "sqlite3": "^3.1.13"
+    "sqlite3": "^3.1.13",
+    "underscore": "^1.8.3"
   },
   "devDependencies": {},
   "scripts": {

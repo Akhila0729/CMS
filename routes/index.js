@@ -56,7 +56,32 @@ router.get('/settings', middleware.isLoggedIn, function (req, res) {
 });
 
 router.get('/record', middleware.isLoggedIn, function (req, res) {
-	res.render('record');
+	var Query = "Parent_ID = '" + req.session.userObjectID[0].objectId + "'";
+	var tableName = "ChildTable";
+	middleware.getObjectID(tableName, Query, function (result) {
+		res.render('record', { title: 'record', children: result.data, locations: null });
+	})
+});
+
+router.post('/record/delete', middleware.isLoggedIn, function (req, res) {
+	Backendless.Data.of("Location").remove({ objectId: req.body.locationObjectID })
+		.then(function (timestamp) {
+			//res.redirect('record');
+		})
+		.catch(function (error) {
+		});
+});
+
+router.post('/record', middleware.isLoggedIn, function (req, res) {
+	var Query = "Child_ID = '" + req.body.childObjectID + "'";
+	var tableName = "Location";
+	middleware.getObjectID(tableName, Query, function (result) {
+		if (result && result.data && result.data.length) {
+			res.json( { status : 200, locations: result.data });			
+		} else {
+			res.json({ status: 400 })
+		}
+	})
 });
 
 router.get('/alert', middleware.isLoggedIn, function (req, res) {
@@ -67,10 +92,7 @@ router.get('/about', middleware.isLoggedIn, function (req, res) {
 	res.render('about');
 });
 
-router.get('/user', middleware.isLoggedIn, function (req, res) 
-{
-	console.log("object id");
-	console.log(req.objectID);
+router.get('/user', middleware.isLoggedIn, function (req, res) {
 	res.render('user');
 });
 
@@ -78,12 +100,12 @@ router.post("/login", function (req, res) {
 	function userLoggedIn(user) {
 		var Query = "email = '" + req.body.emailID + "'";
 		var tableName = "Users";
-		middleware.getObjectID(tableName,Query,function (result) {
-				if (result.data[0].objectId  != null) {
-					req.session.userObjectID = result.data;
-				} 
-				res.redirect("/welcome");
-			})
+		middleware.getObjectID(tableName, Query, function (result) {
+			if (result.data[0].objectId != null) {
+				req.session.userObjectID = result.data;
+			}
+			res.redirect("/welcome");
+		})
 	}
 	function gotError(error) {
 		console.log("error message - " + error.message);

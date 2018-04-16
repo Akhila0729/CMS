@@ -1,6 +1,7 @@
 var express = require('express'),
     middleware = require("../middleware"),
-    router = express.Router();    
+    router = express.Router(),
+    _ =  require("underscore");        
 
 router.get('/welcome', middleware.isLoggedIn, function (req, res) {
     var Query = "Parent_ID = '" + req.session.userObjectID[0].objectId + "'";
@@ -8,6 +9,21 @@ router.get('/welcome', middleware.isLoggedIn, function (req, res) {
     middleware.getObjectID(tableName,Query,function (result) {
             res.render('user', { title: 'User' , children: result.data });
         })        
+});
+
+router.post('/welcome', middleware.isLoggedIn, function (req, res) {
+    var Query = "Child_ID = '" + req.body.childObjectID + "'";
+    var tableName = "Location";
+    middleware.getObjectID(tableName, Query, function (result) {
+        req.session.ChildrenLocation = result.data; 
+        if(result && result.data && result.data.length){
+            maxDate = _.max(_.pluck(result.data, 'created'));
+            reqObj = _.where(result.data, { 'created' : maxDate})
+            res.json( { status : 200, longitude: reqObj[0].Longitude, latitude: reqObj[0].Latitude });
+        }else{
+            res.json({status : 400})
+        }
+    })    
 });
 
 router.post('/addChild', middleware.isLoggedIn, function (req, res) {

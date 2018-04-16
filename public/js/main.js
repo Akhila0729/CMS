@@ -1,76 +1,67 @@
+$("#resulttable tr").click(function () {
+  var childObjectID_ToPost = $(this).children("td").html();
+  var data = {};
+  data.childObjectID = $(this).children("td").html().trim();
+  $.post('http://localhost:4004/welcome', data,
+    function (data, status) {
+      initMap(data)
+    });
+});
 
 var map;
-function initMap() {
-  //console.log(logitude)
-map = new google.maps.Map(document.getElementById('map'), {
-center: { lat: -34.397, lng: 150.644 },
-zoom: 8
-});
+function initMap(val) {
+  var locDet;
+  if (val) {
+    locDet = { lat: val.latitude, lng: val.longitude }
+  } else {
+    locDet = { lat: 21, lng: 23 }
+  }
+
+  map = new google.maps.Map(document.getElementById('map'), {
+
+    center: locDet,
+    zoom: 8
+  });
 }
-//code to retrieve the child object from 
-// function clickForObjectID()
-// {
-// $("#resulttable tr").click(function () {
-//   var childObjectID_ToPost = $(this).children("td").html();
-//   var data = {};
-//   data.childObjectID = $(this).children("td").html().trim();
-//   $.post('http://localhost:4002/welcome', data,
-//       function (data, status) {
-//           var parseData = $.parseJSON(data);
-//           console.log('success' + parseData);
-//       });
-// });
-// }
 
+$("#recordtable1 tr").click(function () {
+  var childObjectID_ToPost = $(this).children("td").html();
+  var data = {};
+  data.childObjectID = $(this).children("td").html().trim();
+  $.post('http://localhost:4004/record', data,
+    function (data, status) {
+      var tablearea = document.getElementById('latLongTable'),
+        table = document.createElement('table');
+      table.border = 1;
 
-// function submit(){
-//     debugger;
-//     console.log("function is called");
-//     var username = document.getElementById("username").value;
-//     var password = document.getElementById("password").value;
-//     var data = []
-//     data = {}
-//     data.username = username;
-//     data.password = password;
-//     var root = "http://localhost:4001/login";
-//     $.ajax({
-//         url : root,
-//         type : 'POST',
-//         data : JSON.stringify(data),
-//         contentType : 'application/json',
-//         success : function(response){
-//             console.log('submitted');
-//         },
-//         complete : function(response){
-//             console.log('submitted-1');
-//            reloadPage();
-//         }
-//     });
-// }
+      for (var i = 0; i < data.locations.length; i++) {
+        //alert(data.locations[0].Latitude);
+        var tr = document.createElement('tr');
 
+        tr.appendChild(document.createElement('td'));
+        tr.appendChild(document.createElement('td'));
+        tr.appendChild(document.createElement('td'));
 
+        tr.cells[0].appendChild(document.createTextNode('Latitude of the location ' + data.locations[i].Latitude));
+        tr.cells[1].appendChild(document.createTextNode('Longitude of the location ' + data.locations[i].Longitude));
+        var btn = document.createElement('input');
+        btn.type = "button";
+        btn.className = "btn";
+        btn.setAttribute('value',"delete");
+        tr.cells[2].appendChild(btn);
+        table.appendChild(tr);
+        btn.onclick = (function () { 
+        alert("delted");
+         tr.deleteCell(0);
+         tr.deleteCell(1);
+         tr.deleteCell(2);
+      
+        });
+       
 
-// function form() {
-//     var username = document.getElementById("#username");
-//     var password = document.getElementById("#password");
+      }
 
-//         $(document).ready(function () {
-//         $('#memployboxes-1').change(function () {
-//             $('#motherdiv').fadeIn();
-//         });
-//         $('#memployboxes-0').change(function () {
-//             $('#motherdiv').fadeOut();
-//         });
-//         $('#femployboxes-1').change(function () {
-//             $('#fatherdiv').fadeIn();
-//         });
-//         $('#femployboxes-0').change(function () {
-//             $('#fatherdiv').fadeOut();
-//         });
-
-//     });
-// };
-
-// form();
-// var optionvalue = document.getElementById("editphnnumber").value;
-// console.log("the option value is "+optionvalue);
+      tablearea.appendChild(table);
+      // if(table.contains(""));
+    });
+});
