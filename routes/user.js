@@ -107,4 +107,10 @@ router.post('/profile/changePassword', middleware.isLoggedIn, function (req, res
         }
     });
 });
+
+router.post('/setalertmode',middleware.isLoggedIn,function (req, res){
+    var mode= req.body.time;
+    console.log("time"  );
+    
+})
 module.exports = router;
