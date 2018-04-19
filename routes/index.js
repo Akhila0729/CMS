@@ -55,29 +55,33 @@ router.get('/settings', middleware.isLoggedIn, function (req, res) {
 	res.render('settings');
 });
 
+router.post('/record/delete', middleware.isLoggedIn, function (req, res) {
+	Backendless.Data.of("Location").remove({ objectId: req.body.locationObjectID })
+		.then(function (timestamp) {
+			
+		})
+		.catch(function (error) {
+		});
+});
+
 router.get('/record', middleware.isLoggedIn, function (req, res) {
 	var Query = "Parent_ID = '" + req.session.userObjectID[0].objectId + "'";
 	var tableName = "ChildTable";
 	middleware.getObjectID(tableName, Query, function (result) {
-		res.render('record', { title: 'record', children: result.data, locations: null });
+		req.session.childDetails = result.data
+		res.render('record', { title: 'record', children: req.session.childDetails, location: req.session.location });
 	})
-});
-
-router.post('/record/delete', middleware.isLoggedIn, function (req, res) {
-	Backendless.Data.of("Location").remove({ objectId: req.body.locationObjectID })
-		.then(function (timestamp) {
-			//res.redirect('record');
-		})
-		.catch(function (error) {
-		});
 });
 
 router.post('/record', middleware.isLoggedIn, function (req, res) {
 	var Query = "Child_ID = '" + req.body.childObjectID + "'";
 	var tableName = "Location";
 	middleware.getObjectID(tableName, Query, function (result) {
+		req.session.location = result.data;
 		if (result && result.data && result.data.length) {
-			res.json( { status : 200, locations: result.data });			
+			res.render('record', { title: 'record', children: req.session.childDetails, location: req.session.location });
+			// res.redirect('http://localhost:4004/record');
+			// res.json( { status : 200, locations: result.data });			
 		} else {
 			res.json({ status: 400 })
 		}

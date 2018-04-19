@@ -92,7 +92,36 @@
     </div>
 
     <div id="latLongTable" class="col-md-8" border='1';width='650' >
+        <%  if(location != null) { %>
+            <h2 id="headtag">List of Locations </h2>
+            <table border='1' style="empty-cells:hide" ;width='650' id="locationTable">
+                <thead>
+                    <tr>
+                        <th class="hidden">LocationId</th>
+                        <th>Latitude</th>
+                        <th>Longitude</th>
+                        <th>Remove</th>                        
+                    </tr>
+                </thead>
 
+                <% location.forEach(function(record) { %>
+                    <tr>
+                        <td class="hidden">
+                            <%=record.objectId%>
+                        </td>
+                        <td>
+                            <%=record.Latitude%>
+                        </td>
+                        <td>
+                            <%=record.Longitude%>
+                        </td>
+                        <td>
+                            <button>Delete</button>
+                        </td>
+                    </tr>
+                    <% }); %>
+            </table>
+            <% } %>
     </div>
     <br>
     <br>
