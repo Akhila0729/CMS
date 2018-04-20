@@ -58,7 +58,7 @@ router.get('/settings', middleware.isLoggedIn, function (req, res) {
 router.post('/record/delete', middleware.isLoggedIn, function (req, res) {
 	Backendless.Data.of("Location").remove({ objectId: req.body.locationObjectID })
 		.then(function (timestamp) {
-			
+
 		})
 		.catch(function (error) {
 		});
@@ -67,6 +67,26 @@ router.post('/record/delete', middleware.isLoggedIn, function (req, res) {
 router.get('/record', middleware.isLoggedIn, function (req, res) {
 	var Query = "Parent_ID = '" + req.session.userObjectID[0].objectId + "'";
 	var tableName = "ChildTable";
+	var pub = "pub";
+		if (pub === "pub") {
+			// prepare message bodies (plain and html) and attachment
+			var bodyParts = new Backendless.Bodyparts();
+			bodyParts.textmessage = "Check out this awesome code generation result";
+			bodyParts.htmlmessage = "Check out this <b>awesome</b> code generation result";
+			var attachments = ["backendless-codegen.zip"];
+
+			// non-blocking call
+			Backendless.Messaging.sendEmail("Email from Backendless",
+				bodyParts,
+				["Harnath10@gmail.com"],
+				attachments)
+				.then(function (response) {
+					console.log("message has been sent");
+				})
+				.catch(function (error) {
+					console.log("error " + error.message);
+				})
+		}
 	middleware.getObjectID(tableName, Query, function (result) {
 		req.session.childDetails = result.data
 		res.render('record', { title: 'record', children: req.session.childDetails, location: req.session.location });
@@ -77,7 +97,7 @@ router.post('/record', middleware.isLoggedIn, function (req, res) {
 	var Query = "Child_ID = '" + req.body.childObjectID + "'";
 	var tableName = "Location";
 	middleware.getObjectID(tableName, Query, function (result) {
-		req.session.location = result.data;
+		req.session.location = result.data;		
 		if (result && result.data && result.data.length) {
 			res.render('record', { title: 'record', children: req.session.childDetails, location: req.session.location });
 			// res.redirect('http://localhost:4004/record');

@@ -1,29 +1,29 @@
 var express = require('express'),
     middleware = require("../middleware"),
     router = express.Router(),
-    _ =  require("underscore");        
+    _ = require("underscore");
 
 router.get('/welcome', middleware.isLoggedIn, function (req, res) {
     var Query = "Parent_ID = '" + req.session.userObjectID[0].objectId + "'";
     var tableName = "ChildTable";
-    middleware.getObjectID(tableName,Query,function (result) {
-            res.render('user', { title: 'User' , children: result.data });
-        })        
+    middleware.getObjectID(tableName, Query, function (result) {
+        res.render('user', { title: 'User', children: result.data });
+    })
 });
 
 router.post('/welcome', middleware.isLoggedIn, function (req, res) {
     var Query = "Child_ID = '" + req.body.childObjectID + "'";
     var tableName = "Location";
     middleware.getObjectID(tableName, Query, function (result) {
-        req.session.ChildrenLocation = result.data; 
-        if(result && result.data && result.data.length){
+        req.session.ChildrenLocation = result.data;
+        if (result && result.data && result.data.length) {
             maxDate = _.max(_.pluck(result.data, 'created'));
-            reqObj = _.where(result.data, { 'created' : maxDate})
-            res.json( { status : 200, longitude: reqObj[0].Longitude, latitude: reqObj[0].Latitude });
-        }else{
-            res.json({status : 400})
+            reqObj = _.where(result.data, { 'created': maxDate })
+            res.json({ status: 200, longitude: reqObj[0].Longitude, latitude: reqObj[0].Latitude });
+        } else {
+            res.json({ status: 400 })
         }
-    })    
+    })
 });
 
 router.post('/addChild', middleware.isLoggedIn, function (req, res) {
@@ -90,7 +90,7 @@ router.post('/profile/changeuserame', middleware.isLoggedIn, function (req, res)
 });
 
 router.post('/profile/changePassword', middleware.isLoggedIn, function (req, res) {
-    var whereClause = "username ='" + req.body.oldPassword + "'";    
+    var whereClause = "username ='" + req.body.oldPassword + "'";
     objectID("Users", whereClause, function (response) {
         if (response.data === "noRecord") {
             console.log("Incorrect Password");
@@ -108,9 +108,21 @@ router.post('/profile/changePassword', middleware.isLoggedIn, function (req, res
     });
 });
 
-router.post('/setalertmode',middleware.isLoggedIn,function (req, res){
-    var mode= req.body.time;
-    console.log("time"  );
-    
+router.post('/mode', middleware.isLoggedIn, function (req, res) {
+    var mode = req.body.mode;
+    var childTable = {
+      mode: req.body.mode
+    }
+
+    var childTable = Backendless.Data.of("ChildTable").save(childTable)
+        .then(function (savedObject) {
+            console.log("new Contact instance has been saved");
+            res.redirect("welcome");
+        })
+        .catch(function (error) {
+            console.log("an error has occurred " + error.message);
+            res.redirect("/settings");
+        })
+
 })
 module.exports = router;
